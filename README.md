@@ -10,13 +10,6 @@ Includes the git feature and runs as the `web-srv` user.
 docker pull mitcdh/caddy
 ````
 
-#### With PHP-FPM
-````bash
-docker pull mitcdh/caddy:php
-````
-
-Includes a php-fpm config intended to be run as web-srv from a Caddyfile `startup` directive.
-
 ### Structure
 * `/www`: Web root
 
