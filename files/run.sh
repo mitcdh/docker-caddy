@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cat >>/www/Caddyfile
+echo $"$*" >> /www/Caddyfile
 exec su -s /bin/sh -c "exec caddy" - web-srv

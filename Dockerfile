@@ -24,4 +24,4 @@ RUN addgroup -S www-data && \
 ADD files/run.sh /scripts/run.sh
 
 WORKDIR /www
-CMD ["/scripts/run.sh"] 
+ENTRYPOINT ["/scripts/run.sh"] 
