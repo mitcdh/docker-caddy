@@ -18,6 +18,10 @@ RUN apk --update add \
  && /usr/bin/caddy -version \
  && rm -rf /var/cache/apk/*
 
+# add user and group
+RUN addgroup -S www-data && \
+ adduser -S -G www-data -g "Web Server" -h "/www" web-srv
+
 EXPOSE 2015
 VOLUME /www
 WORKDIR /www
