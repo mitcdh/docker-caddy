@@ -1,7 +1,7 @@
 FROM alpine:edge
 MAINTAINER Mitchell Hewes <me@mitcdh.com>
 
-ENV CADDY_FEATURES=git
+ENV CADDY_FEATURES="git prometheus realip"
 
 # install caddy
 RUN apk --update add \
