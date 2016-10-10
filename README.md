@@ -2,7 +2,7 @@
 
 Docker base image for a Caddy web server running on [AlpineLinux](http://alpinelinux.org).
 
-Includes the git, prometheus, and realip features.
+Includes the git, prometheus, and realip features. Takes a Caddyfile from stdin on boot and exec's caddy as a `web-srv` user.
 
 ### Usage
 #### Base web server
