@@ -1,7 +1,7 @@
-FROM alpine:edge
+FROM alpine:latest
 MAINTAINER Mitchell Hewes <me@mitcdh.com>
 
-ENV CADDY_FEATURES="git prometheus realip"
+ENV CADDY_FEATURES="git%2Cprometheus%2Crealip"
 
 # install caddy
 RUN apk --update add \
@@ -26,5 +26,4 @@ EXPOSE 2015
 VOLUME /www
 WORKDIR /www
 
-USER web-srv
 CMD ["/usr/bin/caddy"]
