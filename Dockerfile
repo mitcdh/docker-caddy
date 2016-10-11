@@ -22,6 +22,7 @@ RUN addgroup -S www-data && \
  adduser -S -G www-data -g "Web Server" -h "/www" web-srv
 
 ADD files/run.sh /scripts/run.sh
+RUN chmod 500 /scripts/run.sh
 
 WORKDIR /www
 ENTRYPOINT ["/scripts/run.sh"] 
