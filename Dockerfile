@@ -3,7 +3,8 @@ MAINTAINER Mitchell Hewes <me@mitcdh.com>
 
 ENV CADDY_FEATURES="git%2Cprometheus%2Crealip"
 
-# install caddy
+ADD files/run.sh /scripts/run.sh
+
 RUN apk --update add \
 	curl \
 	openssh-client \
@@ -16,13 +17,10 @@ RUN apk --update add \
     | tar --no-same-owner -C /usr/bin/ -xz caddy \
  && chmod 0755 /usr/bin/caddy \
  && /usr/bin/caddy -version \
- && rm -rf /var/cache/apk/*
-
-RUN addgroup -S www-data && \
- adduser -S -G www-data -g "Web Server" -h "/www" web-srv
-
-ADD files/run.sh /scripts/run.sh
-RUN chmod 500 /scripts/run.sh
+ && rm -rf /var/cache/apk/* \
+ && addgroup -S www-data \
+ && adduser -S -G www-data -g "Web Server" -h "/www" web-srv \
+ && chmod 500 /scripts/run.sh
 
 WORKDIR /www
 ENTRYPOINT ["/scripts/run.sh"] 
