@@ -1,4 +1,4 @@
 #!/bin/sh
-
-echo $"$*" >> /www/Caddyfile
+IFS=$'\n'
+echo "$*" >> /www/Caddyfile
 exec su -s /bin/sh -c "exec caddy" - web-srv
