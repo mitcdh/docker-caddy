@@ -20,7 +20,7 @@ RUN apk --update add \
  && rm -rf /var/cache/apk/* \
  && addgroup -S www-data \
  && adduser -S -G www-data -g "Web Server" -h "/www" web-srv \
- && chmod 500 /caddy-bootstrap/run.sh
+ && chmod 500 /caddy-bootstrap/run.sh \
  && mkdir /caddy-bootstrap/pre-run/
 
 WORKDIR /www
