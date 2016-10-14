@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # pre-run scripts
-chmod 500 /caddy-bootstrap/pre-run/* 
 run-parts --exit-on-error /caddy-bootstrap/pre-run/ || exit $?
 
 # generate our caddyfile from provided head
