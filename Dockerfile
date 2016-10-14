@@ -18,8 +18,8 @@ RUN apk --update add \
  && chmod 0755 /usr/bin/caddy \
  && /usr/bin/caddy -version \
  && rm -rf /var/cache/apk/* \
- && addgroup -S www-data \
- && adduser -S -G www-data -g "Web Server" -h "/www" www-data \
+ && addgroup -S www-data -g 1000 \
+ && adduser -S -G www-data -g "Web Server" -h "/www" -u 1000 www-data \
  && chmod 500 /caddy-bootstrap/run.sh \
  && mkdir /caddy-bootstrap/pre-run/
 
