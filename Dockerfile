@@ -1,9 +1,9 @@
-FROM alpine:3.4
+FROM alpine:edge
 MAINTAINER Mitchell Hewes <me@mitcdh.com>
 
 ENV CADDY_FEATURES="git%2Cprometheus%2Crealip"
 
-ADD files/run.sh /scripts/run.sh
+ADD files/run.sh /caddy-bootstrap/run.sh
 
 RUN apk --update add \
 	curl \
@@ -18,9 +18,10 @@ RUN apk --update add \
  && chmod 0755 /usr/bin/caddy \
  && /usr/bin/caddy -version \
  && rm -rf /var/cache/apk/* \
- && addgroup -S www-data \
- && adduser -S -G www-data -g "Web Server" -h "/www" web-srv \
- && chmod 500 /scripts/run.sh
+ && addgroup -S www-data -g 1000 \
+ && adduser -S -G www-data -g "Web Server" -h "/www" -u 1000 www-data \
+ && chmod 500 /caddy-bootstrap/run.sh \
+ && mkdir /caddy-bootstrap/pre-run/
 
 WORKDIR /www
-ENTRYPOINT ["/scripts/run.sh"] 
+ENTRYPOINT ["/caddy-bootstrap/run.sh"] 
