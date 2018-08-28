@@ -1,4 +1,4 @@
-FROM alpine:3.5
+FROM alpine:latest
 MAINTAINER Mitchell Hewes <me@mitcdh.com>
 
 ENV CADDY_FEATURES="git%2Cprometheus%2Crealip"
