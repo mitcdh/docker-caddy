@@ -1,7 +1,7 @@
 FROM alpine:latest
 MAINTAINER Mitchell Hewes <me@mitcdh.com>
 
-ENV CADDY_FEATURES="git%2Cprometheus%2Crealip"
+ENV CADDY_FEATURES="http.git,http.prometheus,http.realip"
 
 ADD files/run.sh /caddy-bootstrap/run.sh
 
@@ -13,7 +13,7 @@ RUN apk --update add \
 	ca-certificates \
  && curl --silent --show-error --fail --location \
       --header "Accept: application/tar+gzip, application/x-gzip, application/octet-stream" -o - \
-      "https://caddyserver.com/download/build?os=linux&arch=amd64&features=${CADDY_FEATURES}" \
+      "https://caddyserver.com/download/linux/amd64?plugins=${CADDY_FEATURES}&license=personal&telemetry=off" \
     | tar --no-same-owner -C /usr/bin/ -xz caddy \
  && chmod 0755 /usr/bin/caddy \
  && /usr/bin/caddy -version \
