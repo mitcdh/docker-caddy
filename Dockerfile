@@ -1,7 +1,7 @@
 FROM alpine:latest
 MAINTAINER Nick Pratley <nick@npratley.net>
 
-ENV CADDY_FEATURES="http.git,http.prometheus,http.realip"
+ENV CADDY_FEATURES="http.git,http.prometheus,http.realip,http.proxy"
 
 COPY files/run.sh /caddy-bootstrap/run.sh
 
