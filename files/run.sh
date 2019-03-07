@@ -34,5 +34,7 @@ fi
 IFS=$'\n'
 echo "$*" >> /www/Caddyfile
 
+ACME_AGREE=true
+
 # exec caddy as www-data from a clean login shell
-exec su -s /bin/sh -c "exec caddy" - www-data
+exec su -s /bin/sh -c "exec ACME_AGREE=true; caddy" - www-data
