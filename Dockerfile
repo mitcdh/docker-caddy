@@ -1,5 +1,5 @@
 FROM alpine:latest
-MAINTAINER Mitchell Hewes <me@mitcdh.com>
+MAINTAINER Nick Pratley <nick@npratley.net>
 
 ENV CADDY_FEATURES="http.git,http.prometheus,http.realip"
 
